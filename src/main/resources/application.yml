@@ -1,0 +1,33 @@
+server:
+  port: 8082
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  datasource:
+    druid:
+      driver-class-name: org.mariadb.jdbc.Driver
+      ## 如果后端项目服务器和数据库服务器不在同一台主机，则需要修改localhost为数据库服务器ip地址
+      url: jdbc:mariadb://43.138.153.143:5306/zhangxin?characterEncoding=utf-8&useSSL=false&useTimezone=true&serverTimezone=GMT%2B8
+      username: root
+      password: 123456
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations:  mapper/*.xml
+  type-aliases-package: com.zx.upload.entity
+upload:
+  uploadPathWin: D:/upload/
+  uploadPathLinux: /tmp/upload/
+
+sync:
+  stfp:
+    host: 127.0.0.1
+
+
